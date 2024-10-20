@@ -8,7 +8,7 @@ export const Gallery = () => {
     <section className="mt-16">
       <div className="image-container">
         {gallery.map((image, index) => (
-          <GalleryCard image={image} key={index} title={""} description={""} />
+          <GalleryCard image={image} key={index} title={""} />
         ))}
       </div>
     </section>
