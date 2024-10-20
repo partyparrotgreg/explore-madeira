@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { regions } from "@/lib/regions";
 import Link from "next/link";
 
-const getRegion = async (slug: String) => {
+const getRegion = async (slug: string) => {
   return await regions.find((region) => region.slug === slug);
 };
 

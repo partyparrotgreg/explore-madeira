@@ -24,6 +24,7 @@ export const RegionsMap = ({ regions }: { regions: RegionType[] }) => {
                 onMouseEnter={() => setSelectedRegion(slug)}
                 onMouseLeave={() => setSelectedRegion(null)}
                 onClick={() => handleClick(slug)}
+                key={slug}
               >
                 <div
                   style={{ backgroundColor: color }}
