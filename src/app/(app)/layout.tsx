@@ -1,7 +1,7 @@
 import { PageLayout } from "@/components/layouts/page-layout";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
-import { Onest, Crimson_Pro as SerifFont } from "next/font/google";
+import { Onest, Libre_Caslon_Text as SerifFont } from "next/font/google";
 
 import { MainNavigation } from "@/components/shared/main-navigation";
 import "./globals.css";

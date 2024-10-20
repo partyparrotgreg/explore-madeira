@@ -117,7 +117,7 @@ body {
       @apply list-decimal ml-4;
     }
     blockquote {
-      @apply border-l-4 border-slate-200 dark:border-slate-800 pl-4 text-slate-600 dark:text-slate-400 font-serif text-5xl;
+      @apply border-l-8 border-amber-400 pl-4 text-slate-500 dark:text-slate-400 font-serif text-3xl;
     }
     a {
       @apply text-blue-700 dark:text-blue-400 underline-offset-4 hover:underline;

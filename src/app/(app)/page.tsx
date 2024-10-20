@@ -9,7 +9,7 @@ import { RegionsSection } from "./_sections/RegionsSection";
 export default async function Home() {
   return (
     <main className="flex flex-col gap-8">
-      <section className="relative isolate">
+      <section className="relative isolate -mx-3 md:mx-0">
         <div className="aspect-square lg:aspect-[16/6] overflow-hidden relative rounded-3xl">
           <div className="absolute inset-0 flex flex-col gap-8 items-center justify-start pt-24 z-50">
             <LogoMadeiraExplore className="h-24 filter brightness-[500]" />

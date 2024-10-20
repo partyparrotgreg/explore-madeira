@@ -1,15 +1,18 @@
 "use client";
 
 import { MadeiraMap } from "@/components/maps/MadeiraMap";
-import { regions } from "@/lib/regions";
+import { useRegions } from "@/hooks/use-regions";
 import { RegionType } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+
 export const RegionsSection = () => {
+  const regions = useRegions();
   const [selectedRegion, setSelectedRegion] = useState<
     RegionType["slug"] | null
   >(null);
+
   return (
     <section className="flex flex-col gap-8">
       <h2>Regions</h2>

@@ -10,7 +10,7 @@ export const MadeiraMap = ({
   region: string | null;
   regions: RegionType[] | undefined;
 }) => {
-  if (!regions) return <div>Defin regions!</div>;
+  if (!regions) return <div>Define regions!</div>;
 
   const orderedRegions = regions.sort((a, b) => a.order - b.order);
 

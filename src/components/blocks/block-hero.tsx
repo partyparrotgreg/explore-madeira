@@ -16,7 +16,7 @@ export const BlockHero = ({
   ...props
 }: BlockHeroProps) => {
   return (
-    <section className="relative isolate -mx-6" {...props}>
+    <section className="relative isolate -mx-3 md:mx-0" {...props}>
       <div className="aspect-square lg:aspect-[16/9] overflow-hidden relative rounded-3xl">
         <div className="absolute inset-0 flex flex-col gap-4 items-center justify-center z-50 text-white p-4">
           <Badge>Region</Badge>

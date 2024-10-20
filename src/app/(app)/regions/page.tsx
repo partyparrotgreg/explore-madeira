@@ -1,18 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { regions } from "@/lib/regions";
+import { useRegions } from "@/hooks/use-regions";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { RegionsMap } from "./_components/RegionsMap";
 
 export default function RegionsPage() {
-  const regionsByName = regions.sort((a, b) => a.name.localeCompare(b.name));
+  const regions = useRegions();
+
   return (
     <main className="flex flex-col gap-8">
       <RegionsMap regions={regions} />
       <section className="flex flex-col gap-12">
         <div className="grid grid-cols-1md:grid-cols-3 gap-12">
-          {regionsByName.map(({ slug, name, description }) => (
+          {regions.map(({ slug, name, description }) => (
             <Link
               key={slug}
               href={`/regions/${slug}`}
