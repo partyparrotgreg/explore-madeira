@@ -2,20 +2,15 @@
 import { LogoMadeiraExplore } from "@/assets/brand/LogoMadeiraExplore";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { locations } from "@/lib/locations";
-import { regions } from "@/lib/regions";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import * as React from "react";
 import { ModeToggle } from "../theme-toggle";
-import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 
 const components: { title: string; href: string; description: string }[] = [
@@ -68,40 +63,25 @@ export function MainNavigation() {
             <NavigationMenuItem>
               <Link href="/regions" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Regions <Badge className="ml-2">{regions.length}</Badge>
+                  Regions
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/places" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Places <Badge className="ml-2">{locations.length}</Badge>
+                  Places
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/places" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Hikes <Badge className="ml-2">{locations.length}</Badge>
+                  Hikes
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Hikes</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {components.map((component) => (
-                    <ListItem
-                      key={component.title}
-                      title={component.title}
-                      href={component.href}
-                    >
-                      {component.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+
             <NavigationMenuItem>
               <Link href="/news" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>

@@ -1,8 +1,19 @@
 "use client";
 
-import { regions } from "@/lib/regions";
+import { RegionType } from "@/lib/types";
 
-export const MadeiraMap = ({ region, ...props }: { region: string | null }) => {
+export const MadeiraMap = ({
+  region,
+  regions,
+  ...props
+}: {
+  region: string | null;
+  regions: RegionType[] | undefined;
+}) => {
+  if (!regions) return <div>Defin regions!</div>;
+
+  const orderedRegions = regions.sort((a, b) => a.order - b.order);
+
   return (
     <svg fill="none" {...props} viewBox="0 0 1989 975">
       <g>
@@ -13,7 +24,7 @@ export const MadeiraMap = ({ region, ...props }: { region: string | null }) => {
         />
       </g>
       <g>
-        {regions.map(({ id, color, slug, path }) => (
+        {orderedRegions.map(({ id, color, slug, path }) => (
           <path
             key={id}
             id={slug}

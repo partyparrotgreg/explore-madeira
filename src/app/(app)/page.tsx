@@ -1,19 +1,16 @@
 import { LogoMadeiraExplore } from "@/assets/brand/LogoMadeiraExplore";
-import { MadeiraMap } from "@/components/maps/MadeiraMap";
-import { LocationCard } from "@/components/shared/location-card";
+import { BlockLocations } from "@/components/blocks/block-locations";
 import { PhotoAuthor } from "@/components/shared/photo-author";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { locations } from "@/lib/locations";
-import { regions } from "@/lib/regions";
 import Image from "next/image";
-import Link from "next/link";
+import { RegionsSection } from "./_sections/RegionsSection";
 export default async function Home() {
   return (
     <main className="flex flex-col gap-8">
       <section className="relative isolate">
-        <div className="aspect-square lg:aspect-[16/6] overflow-hidden relative  rounded-3xl">
+        <div className="aspect-square lg:aspect-[16/6] overflow-hidden relative rounded-3xl">
           <div className="absolute inset-0 flex flex-col gap-8 items-center justify-start pt-24 z-50">
             <LogoMadeiraExplore className="h-24 filter brightness-[500]" />
             <p className="text-white text-2xl font-bold max-w-96 text-center">
@@ -37,33 +34,7 @@ export default async function Home() {
           <Button>Search</Button>
         </div>
       </section>
-      <section className="flex flex-col gap-8 px-8">
-        <h2>Regions</h2>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="grid grid-cols-2 gap-4">
-            {regions.map(({ id, slug, name, description, image }) => (
-              <Link
-                key={id}
-                href={`/regions/${slug}`}
-                className="block p-6 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 bg-card"
-              >
-                <div className="flex flex-col justify-between h-full gap-8">
-                  <Image src={image} alt={name} width={64} />
-                  <div>
-                    <h5 className="font-medium text-lg">{name}</h5>
-                    <p className="text-sm text-foreground/75 line-clamp-3">
-                      {description}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="bg-card p-12 rounded-2xl">
-            <MadeiraMap region={null} />
-          </div>
-        </div>
-      </section>
+      <RegionsSection />
       <section className="flex flex-col gap-8 px-8">
         <div className="flex flex-row justify-between items-center">
           <h2>Calheta</h2>
@@ -74,13 +45,7 @@ export default async function Home() {
             </Badge>
           </Button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {locations.map((location) => (
-            <Link href={`/location/${location.slug}`} key={location.id}>
-              <LocationCard location={location} />
-            </Link>
-          ))}
-        </div>
+        <BlockLocations />
       </section>
     </main>
   );

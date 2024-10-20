@@ -1,7 +1,7 @@
 "use client";
 
 import { MadeiraMap } from "@/components/maps/MadeiraMap";
-import { RegionType } from "@/lib/regions";
+import { RegionType } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -13,6 +13,7 @@ export const RegionsMap = ({ regions }: { regions: RegionType[] }) => {
   const handleClick = (slug: string) => {
     router.push(`/regions/${slug}`);
   };
+
   return (
     <section>
       <div className="bg-card p-12 rounded-3xl relative">
@@ -35,7 +36,7 @@ export const RegionsMap = ({ regions }: { regions: RegionType[] }) => {
             );
           })}
         </div>
-        <MadeiraMap region={selectedRegion} />
+        <MadeiraMap region={selectedRegion} regions={regions} />
       </div>
     </section>
   );

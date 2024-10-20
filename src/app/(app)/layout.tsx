@@ -1,14 +1,19 @@
 import { PageLayout } from "@/components/layouts/page-layout";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
-import { Onest } from "next/font/google";
+import { Onest, Crimson_Text as SerifFont } from "next/font/google";
 
 import { MainNavigation } from "@/components/shared/main-navigation";
 import "./globals.css";
 
+const garamond = SerifFont({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-custom-serif",
+});
 const onest = Onest({
   subsets: ["latin"],
-  variable: "--font-onest",
+  variable: "--font-custom-sans",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${onest.className} antialiased`}>
+      <body className={`${onest.className} ${garamond.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

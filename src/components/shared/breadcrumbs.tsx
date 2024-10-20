@@ -1,12 +1,10 @@
-import Link from "next/link";
-
 import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { HomeIcon } from "@radix-ui/react-icons";
 
@@ -15,15 +13,13 @@ export function BreadcrumbWithCustomSeparator() {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink>
-            <Link href="/"><HomeIcon /></Link>
+          <BreadcrumbLink href="/">
+            <HomeIcon />
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink>
-            <Link href="/components">Hikes</Link>
-          </BreadcrumbLink>
+          <BreadcrumbLink href="/components">Hikes</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>

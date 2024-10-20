@@ -4,14 +4,14 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { RegionsMap } from "./_components/RegionsMap";
+
 export default function RegionsPage() {
   const regionsByName = regions.sort((a, b) => a.name.localeCompare(b.name));
   return (
     <main className="flex flex-col gap-8">
-      <RegionsMap regions={regionsByName} />
-      <section className="flex flex-col gap-8 px-8 lg:px-0">
-        <h2>Regions</h2>
-        <div className="grid grid-cols-3 gap-4">
+      <RegionsMap regions={regions} />
+      <section className="flex flex-col gap-12 px-8 lg:px-0">
+        <div className="grid grid-cols-3 gap-12">
           {regionsByName.map(({ slug, name, description }) => (
             <Link
               key={slug}

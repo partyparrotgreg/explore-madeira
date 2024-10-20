@@ -11,7 +11,7 @@ interface ILocationProps extends React.HTMLAttributes<HTMLDivElement> {
 export const LocationCard = ({ location }: ILocationProps) => {
   const { name, description } = location;
   return (
-    <div className="group mb-8">
+    <div className="group mb-8 isolate">
       <div className="aspect-video relative overflow-hidden w-full rounded-2xl">
         <div className="absolute z-50 p-4 flex flex-row justify-between items-start w-full">
           <Badge>Hiking</Badge>
@@ -28,7 +28,7 @@ export const LocationCard = ({ location }: ILocationProps) => {
         />
       </div>
       <div className="py-4">
-        <h4 className="font-medium">{name}</h4>
+        <div className="font-medium text-xl">{name}</div>
         <p className="text-muted-foreground">{description}</p>
       </div>
     </div>
