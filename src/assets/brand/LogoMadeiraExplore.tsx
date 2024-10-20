@@ -1,7 +1,7 @@
 "use client";
 
 import { useIsDark } from "@/hooks/use-isdark";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 interface LogoMadeiraExploreProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
@@ -10,8 +10,13 @@ interface LogoMadeiraExploreProps extends React.SVGProps<SVGSVGElement> {
 export const LogoMadeiraExplore = memo(
   ({ ...props }: LogoMadeiraExploreProps) => {
     const isDark = useIsDark();
-    const primary = isDark ? "#fff" : "#F59E0B";
-    const secondary = isDark ? "#fff" : "#451A03";
+    const primary = "#F59E0B";
+    const secondary = useMemo(() => {
+      if (isDark) {
+        return "#fff";
+      }
+      return "#451A03";
+    }, [isDark]);
     return (
       <svg
         viewBox="0 0 186 69"
