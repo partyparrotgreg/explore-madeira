@@ -27,7 +27,7 @@ export function MainNavigation() {
     <div className="flex flex-row justify-between bg-background items-center h-16 md:h-20 sticky top-0 z-10 -mx-3 px-3 md:-mx-0 md:px-0">
       <div className="flex flex-row gap-6">
         <Link href="/" className="block">
-          <LogoMadeiraExplore className="h-10" />
+          <LogoMadeiraExplore className="h-12" />
         </Link>
         <div className="flex-row gap-4 hidden md:flex">
           <DesktopMenu />
