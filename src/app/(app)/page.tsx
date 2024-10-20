@@ -29,13 +29,13 @@ export default async function Home() {
             alt="Porto Moniz"
           />
         </div>
-        <div className="p-4 bg-background rounded-2xl absolute -bottom-8 left-1/2 -translate-x-1/2 flex flex-row gap-2 z-50">
+        <div className="md:p-4 mt-6 md:mt-0 bg-background rounded-2xl md:absolute md:-bottom-8 md:left-1/2 md:-translate-x-1/2 flex flex-row gap-2 z-50">
           <Input placeholder="Search..." className="min-w-64" />{" "}
           <Button>Search</Button>
         </div>
       </section>
       <RegionsSection />
-      <section className="flex flex-col gap-8 px-8">
+      <section className="flex flex-col gap-8">
         <div className="flex flex-row justify-between items-center">
           <h2>Calheta</h2>
           <Button variant={"ghost"}>

@@ -7,122 +7,132 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
+import { MenuIcon } from "lucide-react";
 import Link from "next/link";
-import * as React from "react";
+import { useRouter } from "next/navigation";
 import { ModeToggle } from "../theme-toggle";
 import { Button } from "../ui/button";
-
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-];
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTrigger,
+} from "../ui/drawer";
+import { Separator } from "../ui/separator";
 
 export function MainNavigation() {
   return (
-    <div className="flex flex-row justify-between layout-container  bg-background items-center h-20 max-w-screen-2xl mx-auto sticky top-0 z-10">
+    <div className="flex flex-row justify-between bg-background items-center h-16 md:h-20 sticky top-0 z-10 -mx-3 px-3 md:-mx-0 md:px-0">
       <div className="flex flex-row gap-6">
         <Link href="/" className="block">
           <LogoMadeiraExplore className="h-10" />
         </Link>
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <Link href="/regions" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Regions
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/places" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Places
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/places" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Hikes
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link href="/news" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  News
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div className="flex-row gap-4 hidden md:flex">
+          <DesktopMenu />
+        </div>
       </div>
-      <div className="flex flex-row gap-3">
+      <div className="flex flex-row gap-2">
         <Button variant={"outline"}>Sign in</Button>
         <Button variant={"solid"}>Get started</Button>
-        <ModeToggle />
+        <div className="hidden md:block">
+          <ModeToggle />
+        </div>
+        <div className="block md:hidden">
+          <Drawer>
+            <DrawerTrigger asChild>
+              <Button size={"icon"}>
+                <MenuIcon />
+              </Button>
+            </DrawerTrigger>
+            <DrawerContent>
+              <div className="mx-auto w-full ">
+                <DrawerHeader>
+                  <LogoMadeiraExplore className="h-10" />
+                </DrawerHeader>
+
+                <DrawerFooter>
+                  <MobileMenu />
+                  <DrawerClose asChild>
+                    <Button variant="outline">Close</Button>
+                  </DrawerClose>
+                </DrawerFooter>
+              </div>
+            </DrawerContent>
+          </Drawer>
+        </div>
       </div>
     </div>
   );
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+const MobileMenu = () => {
+  const router = useRouter();
   return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
+    <div className="flex flex-col gap-4">
+      <DrawerClose asChild>
+        <Button variant={"outline"} onClick={() => router.push("/regions")}>
+          Regions
+        </Button>
+      </DrawerClose>
+      <DrawerClose asChild>
+        <Button variant={"outline"} onClick={() => router.push("/regions")}>
+          Places
+        </Button>
+      </DrawerClose>
+      <DrawerClose asChild>
+        <Button variant={"outline"} onClick={() => router.push("/regions")}>
+          Hikes
+        </Button>
+      </DrawerClose>
+      <DrawerClose asChild>
+        <Button variant={"outline"} onClick={() => router.push("/news")}>
+          News
+        </Button>
+      </DrawerClose>
+      <Separator />
+      <div>
+        <ModeToggle />
+      </div>
+    </div>
   );
-});
-ListItem.displayName = "ListItem";
+};
+
+const DesktopMenu = () => {
+  return (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <Link href="/regions" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Regions
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/places" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Places
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/places" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Hikes
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <Link href="/news" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              News
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  );
+};

@@ -13,7 +13,7 @@ export const PhotoAuthor = ({ author, image, ...props }: IPhotoAuthorProps) => {
     .join("");
 
   const classes = cn(
-    "absolute items-center justify-center rounded-full bg-background p-1 m-3 text-xs bottom-0 flex flex-row z-[100]",
+    "absolute items-center justify-center rounded-full bg-background p-1 m-3 text-xs bottom-0 flex flex-row z-[1]",
     props.className
   );
   return (

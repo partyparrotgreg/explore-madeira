@@ -16,8 +16,8 @@ export const RegionsMap = ({ regions }: { regions: RegionType[] }) => {
 
   return (
     <section>
-      <div className="bg-card p-12 rounded-3xl relative">
-        <div className="absolute bottom-0 left-0 p-4">
+      <div className="bg-card md:p-12 rounded-3xl relative">
+        <div className="md:absolute bottom-0 left-0 p-4 grid grid-cols-2 md:grid-cols-1">
           {regions.map(({ name, color, slug }) => {
             return (
               <div

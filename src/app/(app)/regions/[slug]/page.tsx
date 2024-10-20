@@ -1,8 +1,5 @@
-import { PhotoAuthor } from "@/components/shared/photo-author";
-import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 import { regions } from "@/lib/regions";
-import Image from "next/image";
-import { DemoArticle } from "../../news/_components/demo-article";
 const getRegion = async (slug: string) => {
   return await regions.find((region) => region.slug === slug);
 };
@@ -20,8 +17,10 @@ export default async function RegionPage({
     image: "https://github.com/shadcn.png",
   };
   return (
-    <main className="flex flex-col">
-      <section className="relative isolate mb-6">
+    <main className="flex flex-col gap-8 pt-8">
+      <h1>{name}</h1>
+      <p>{description}</p>
+      {/* <section className="relative isolate mb-6">
         <div className="aspect-square lg:aspect-[16/9] overflow-hidden relative  rounded-3xl">
           <div className="absolute inset-0 flex flex-col gap-4 items-center justify-center z-50 text-white">
             <Badge>{name}</Badge>
@@ -43,8 +42,13 @@ export default async function RegionPage({
             alt="Porto Moniz"
           />
         </div>
-      </section>
-      <DemoArticle />
+      </section> */}
+      <h2>News</h2>
+      <Separator />
+      <h2>Places</h2>
+      <Separator />
+      <h2>Hikes</h2>
+      <Separator />
     </main>
   );
 }

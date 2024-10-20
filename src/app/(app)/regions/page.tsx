@@ -10,8 +10,8 @@ export default function RegionsPage() {
   return (
     <main className="flex flex-col gap-8">
       <RegionsMap regions={regions} />
-      <section className="flex flex-col gap-12 px-8 lg:px-0">
-        <div className="grid grid-cols-3 gap-12">
+      <section className="flex flex-col gap-12">
+        <div className="grid grid-cols-1md:grid-cols-3 gap-12">
           {regionsByName.map(({ slug, name, description }) => (
             <Link
               key={slug}

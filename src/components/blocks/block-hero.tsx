@@ -16,12 +16,12 @@ export const BlockHero = ({
   ...props
 }: BlockHeroProps) => {
   return (
-    <section className="relative isolate" {...props}>
-      <div className="aspect-square lg:aspect-[16/9] overflow-hidden relative  rounded-3xl">
-        <div className="absolute inset-0 flex flex-col gap-4 items-center justify-center z-50 text-white">
+    <section className="relative isolate -mx-6" {...props}>
+      <div className="aspect-square lg:aspect-[16/9] overflow-hidden relative rounded-3xl">
+        <div className="absolute inset-0 flex flex-col gap-4 items-center justify-center z-50 text-white p-4">
           <Badge>Region</Badge>
-          <h1 className="text-7xl font-bold">{title}</h1>
-          <p className="text-xl">{blurb}</p>
+          <h1 className="text-3xl lg:text-7xl font-bold">{title}</h1>
+          <p className="lg:text-xl text-center">{blurb}</p>
           <p>
             by <span className="font-bold">{author?.name}</span> | 5 days ago
           </p>
@@ -34,7 +34,7 @@ export const BlockHero = ({
             "https://images.unsplash.com/photo-1636964518395-ef7b9eb1cbb5?q=80&w=4025&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           }
           layout="fill"
-          className="absolute bottom-0"
+          className="absolute bottom-0 object-cover"
           alt="Porto Moniz"
         />
       </div>

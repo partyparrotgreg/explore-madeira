@@ -11,10 +11,10 @@ export const RegionsSection = () => {
     RegionType["slug"] | null
   >(null);
   return (
-    <section className="flex flex-col gap-8 px-8">
+    <section className="flex flex-col gap-8">
       <h2>Regions</h2>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {regions.map(({ id, slug, name, description, image }) => (
             <Link
               key={id}
@@ -35,7 +35,7 @@ export const RegionsSection = () => {
             </Link>
           ))}
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex-col gap-4 hidden md:flex">
           <div className="sticky top-4 z-50">
             <MadeiraMap region={selectedRegion} regions={regions} />
           </div>

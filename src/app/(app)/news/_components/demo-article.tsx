@@ -2,9 +2,7 @@ import { BlockLocations } from "@/components/blocks/block-locations";
 import { GalleryCard } from "@/components/shared/gallery-card";
 import { PhotoAuthor } from "@/components/shared/photo-author";
 import { gallery } from "@/lib/gallery";
-import { BreadcrumbWithCustomSeparator } from "../../../../components/shared/breadcrumbs";
 import { Gallery } from "../../../../components/shared/gallery";
-import { Button } from "../../../../components/ui/button";
 
 interface DemoArticleProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
@@ -14,21 +12,12 @@ interface DemoArticleProps extends React.HTMLAttributes<HTMLDivElement> {
 export const DemoArticle = ({ title, blurb, ...props }: DemoArticleProps) => {
   return (
     <main className="flex flex-col gap-8" {...props}>
-      <div
-        className="flex flex-row justify-between items-center max-w-screen-lg
-       m-auto w-full"
-      >
-        <BreadcrumbWithCustomSeparator />
-        <div className="flex flex-row gap-2 items-center">
-          <PhotoAuthor className="relative bg-card inline-flex self-center" />
-          <Button size={"sm"} variant={"outline"}>
-            Save
-          </Button>
-        </div>
-      </div>
       <section className="flex flex-col gap-16">
         <article className="col-span-2 mx-auto max-w-screen-lg flex flex-col gap-8 article">
-          <h1>{title ?? "Welcome to My Blog!"}</h1>
+          <PhotoAuthor className="relative bg-card inline-flex self-center" />
+          <h1 className="text-center">
+            {title ?? "Welcome to My Blog asdasd !"}
+          </h1>
           {blurb && <p>{blurb}</p>}
 
           <p>
@@ -69,15 +58,7 @@ export const DemoArticle = ({ title, blurb, ...props }: DemoArticleProps) => {
             cumque voluptatibus quas!
           </p>
 
-          <GalleryCard
-            image={gallery[3]}
-            title="Title"
-            style={{
-              width: "calc(100% + 4rem)",
-              marginLeft: "-4rem",
-              marginRight: "-2rem",
-            }}
-          />
+          <GalleryCard image={gallery[3]} title="Title" />
 
           <h2>Headings</h2>
 
