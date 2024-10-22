@@ -1,15 +1,9 @@
 "use client";
 import { LogoMadeiraExplore } from "@/assets/brand/LogoMadeiraExplore";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+import { nav } from "@/lib/nav";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ModeToggle } from "../theme-toggle";
 import { Button } from "../ui/button";
 import {
@@ -24,12 +18,12 @@ import { Separator } from "../ui/separator";
 
 export function MainNavigation() {
   return (
-    <div className="flex flex-row justify-between bg-background items-center h-16 md:h-20 sticky top-0 z-10 -mx-3 px-3 md:-mx-0 md:px-0">
+    <div className="flex flex-row justify-between bg-background/80  backdrop-blur-3xl items-center h-16 md:h-20 sticky top-0 z-10 -mx-3 px-3 md:-mx-0 md:px-0">
       <div className="flex flex-row gap-6">
         <Link href="/" className="block">
           <LogoMadeiraExplore className="h-12" />
         </Link>
-        <div className="flex-row gap-4 hidden md:flex">
+        <div className="flex-row gap-4 hidden md:flex items-center">
           <DesktopMenu />
         </div>
       </div>
@@ -71,26 +65,18 @@ const MobileMenu = () => {
   const router = useRouter();
   return (
     <div className="flex flex-col gap-4">
-      <DrawerClose asChild>
-        <Button variant={"outline"} onClick={() => router.push("/regions")}>
-          Regions
-        </Button>
-      </DrawerClose>
-      <DrawerClose asChild>
-        <Button variant={"outline"} onClick={() => router.push("/regions")}>
-          Places
-        </Button>
-      </DrawerClose>
-      <DrawerClose asChild>
-        <Button variant={"outline"} onClick={() => router.push("/regions")}>
-          Hikes
-        </Button>
-      </DrawerClose>
-      <DrawerClose asChild>
-        <Button variant={"outline"} onClick={() => router.push("/news")}>
-          News
-        </Button>
-      </DrawerClose>
+      {nav.map((item) => (
+        <DrawerClose asChild>
+          <Button
+            variant={"outline"}
+            onClick={() => router.push(item.href)}
+            key={item.slug}
+          >
+            {item.title}
+          </Button>
+        </DrawerClose>
+      ))}
+
       <Separator />
       <div>
         <ModeToggle />
@@ -100,39 +86,19 @@ const MobileMenu = () => {
 };
 
 const DesktopMenu = () => {
+  const pathname = usePathname();
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <Link href="/regions" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Regions
-            </NavigationMenuLink>
+    <div className="flex flex-row gap-2">
+      {nav.map(({ href, icon, slug, title }) => {
+        const Icon = icon;
+        return (
+          <Link href={href} legacyBehavior passHref>
+            <Button variant={pathname === href ? "solid" : "ghost"}>
+              <Icon size={16} className="mr-2" /> {title}
+            </Button>
           </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/places" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Places
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/places" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Hikes
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <Link href="/news" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              News
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+        );
+      })}
+    </div>
   );
 };

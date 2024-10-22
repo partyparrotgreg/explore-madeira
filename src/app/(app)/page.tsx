@@ -1,4 +1,3 @@
-import { LogoMadeiraExplore } from "@/assets/brand/LogoMadeiraExplore";
 import { BlockLocations } from "@/components/blocks/block-locations";
 import { PhotoAuthor } from "@/components/shared/photo-author";
 import { Badge } from "@/components/ui/badge";
@@ -11,10 +10,10 @@ export default async function Home() {
     <main className="flex flex-col gap-8">
       <section className="relative isolate -mx-3 md:mx-0">
         <div className="aspect-square lg:aspect-[16/6] overflow-hidden relative rounded-3xl">
-          <div className="absolute inset-0 flex flex-col gap-8 items-center justify-start pt-24 z-50">
-            <LogoMadeiraExplore className="h-24 filter brightness-[500]" />
-            <p className="text-white text-2xl font-bold max-w-96 text-center">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <div className="absolute inset-0 flex flex-col gap-8 items-center justify-center z-50">
+            <h1 className="text-white">Welcome to Madeira Island</h1>
+            <p className="text-white text-2xl font-medium max-w-96 text-center">
+              &mdash; The land of the wild bunnies 🐰
             </p>
           </div>
           <div className="bg-gradient-to-b from-black/50 to-black/0 absolute top-0 h-full z-20 w-full" />

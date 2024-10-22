@@ -93,9 +93,12 @@ body {
   h5 {
     @apply text-lg lg:text-xl font-semibold;
   }
+  a {
+    @apply text-blue-700 dark:text-blue-400 underline-offset-4 hover:underline;
+  }
   .article {
     p {
-      @apply text-xl xl:text-2xl leading-relaxed font-serif text-stone-900 dark:text-stone-300;
+      @apply text-xl leading-relaxed font-serif text-stone-900 dark:text-stone-300;
     }
     thead th {
       @apply bg-card text-foreground py-2 px-3 text-left;
@@ -118,9 +121,6 @@ body {
     }
     blockquote {
       @apply border-l-8 border-amber-400 pl-4 text-slate-500 dark:text-slate-400 font-serif text-3xl;
-    }
-    a {
-      @apply text-blue-700 dark:text-blue-400 underline-offset-4 hover:underline;
     }
   }
 }

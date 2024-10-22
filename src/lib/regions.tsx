@@ -8,6 +8,9 @@ import RibeiraBravaRegionSVG from "@/assets/ribeira-brava.svg";
 import SantaCruzRegionSVG from "@/assets/santa-cruz.svg";
 import SantanaRegionSVG from "@/assets/santana.svg";
 import SaoVicenteRegionSVG from "@/assets/sao-vicente.svg";
+
+import CalhetaCoat from "@/assets/CLT.png";
+
 import { RegionType } from "./types";
 
 export const regions: RegionType[] = [
@@ -65,6 +68,7 @@ export const regions: RegionType[] = [
     color: "#E879F9",
     path: "M632.716 405.458l-16-28-72 40-120-12-88-160-32 28-180-140-112 112 64 64v32l32 32v64h32v32l128 128h64l64 64h31.758l84.242-168 120-88z",
     order: 5,
+    coat: CalhetaCoat,
   },
   {
     id: 6,

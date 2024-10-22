@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { regions } from "@/lib/regions";
+import Link from "next/link";
 const getRegion = async (slug: string) => {
   return await regions.find((region) => region.slug === slug);
 };
@@ -18,37 +19,37 @@ export default async function RegionPage({
   };
   return (
     <main className="flex flex-col gap-8 pt-8">
-      <h1>{name}</h1>
-      <p>{description}</p>
-      {/* <section className="relative isolate mb-6">
-        <div className="aspect-square lg:aspect-[16/9] overflow-hidden relative  rounded-3xl">
-          <div className="absolute inset-0 flex flex-col gap-4 items-center justify-center z-50 text-white">
-            <Badge>{name}</Badge>
-            <h1 className="text-7xl font-bold">Charming {name}</h1>
-            <p className="text-xl">{description}</p>
-            <p>
-              by <span className="font-bold">{author?.name}</span> | 5 days ago
-            </p>
-          </div>
-          <div className="bg-gradient-to-b from-black/50 to-black/0 absolute top-0 h-full z-20 w-full" />
-          <PhotoAuthor author="Author" image="https://github.com/shadcn.png" />
-          <Image
-            priority
-            src={
-              "https://images.unsplash.com/photo-1636964518395-ef7b9eb1cbb5?q=80&w=4025&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            }
-            layout="fill"
-            className="absolute bottom-0"
-            alt="Porto Moniz"
-          />
+      <section className="flex flex-row gap-8">
+        <div className="w-56">
+          <h5 className="mb-8">Regions</h5>
+          {regions.map(({ name, color, slug }) => {
+            return (
+              <Link
+                href={`/regions/${slug}`}
+                className="flex flex-row items-center justify-start hover:cursor-pointer py-1 px-2 hover:bg-background rounded-full"
+                key={slug}
+              >
+                <div
+                  style={{ backgroundColor: color }}
+                  className="h-3 w-3 rounded-full"
+                />
+                <div className="text-sm font-medium px-2">{name}</div>
+              </Link>
+            );
+          })}
         </div>
-      </section> */}
-      <h2>News</h2>
-      <Separator />
-      <h2>Places</h2>
-      <Separator />
-      <h2>Hikes</h2>
-      <Separator />
+        <article className="flex flex-col gap-8">
+          <h1>{name}</h1>
+          <p>{description}</p>
+
+          <h2>News</h2>
+          <Separator />
+          <h2>Places</h2>
+          <Separator />
+          <h2>Hikes</h2>
+          <Separator />
+        </article>
+      </section>
     </main>
   );
 }

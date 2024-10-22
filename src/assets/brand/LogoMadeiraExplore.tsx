@@ -15,7 +15,7 @@ export const LogoMadeiraExplore = memo(
       if (isDark) {
         return "#fff";
       }
-      return "#000";
+      return "#121212";
     }, [isDark]);
     return (
       <svg
