@@ -12,6 +12,7 @@ import SaoVicenteRegionSVG from "@/assets/sao-vicente.svg";
 import CalhetaCoat from "@/assets/CLT.png";
 
 import { RegionType } from "./types";
+import { useMemo } from "react";
 
 export const regions: RegionType[] = [
   {
@@ -126,3 +127,10 @@ export const regions: RegionType[] = [
     order: 10,
   },
 ];
+
+
+export const useRegions = () => {
+  return useMemo(() => {
+    return regions.sort((a, b) => a.order - b.order);
+  }, []);
+};

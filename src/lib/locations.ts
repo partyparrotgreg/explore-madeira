@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 export type LocationType = {
   id: string;
   name: string;
@@ -5,6 +7,7 @@ export type LocationType = {
   image: string;
   slug: string;
   region: string;
+  type: "hike" | "bar" | "viewpoint";
 };
 
 export const locations: LocationType[] = [
@@ -16,6 +19,7 @@ export const locations: LocationType[] = [
       "https://images.unsplash.com/photo-1585173847038-1cfe1954c10a?q=80&w=5080&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     slug: "pr1-pico-do-areeiro",
     region: "Santana",
+    type: "hike",
   },
   {
     id: "2",
@@ -25,6 +29,7 @@ export const locations: LocationType[] = [
       "https://images.unsplash.com/photo-1585173847038-1cfe1954c10a?q=80&w=5080&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     slug: "pr2-pico-do-areeiro",
     region: "Santana",
+    type: "bar",
   },
   {
     id: "3",
@@ -34,6 +39,7 @@ export const locations: LocationType[] = [
       "https://images.unsplash.com/photo-1585173847038-1cfe1954c10a?q=80&w=5080&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     slug: "pr3-pico-do-areeiro",
     region: "Santana",
+    type: "hike",
   },
   {
     id: "4",
@@ -43,5 +49,14 @@ export const locations: LocationType[] = [
       "https://images.unsplash.com/photo-1585173847038-1cfe1954c10a?q=80&w=5080&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     slug: "pr4-pico-do-areeiro",
     region: "Ribeira Brava",
+    type: "hike",
   },
 ];
+
+export const useLocations = () => {
+  const location = (slug: string) => locations.find((loc) => loc.slug === slug);
+  const locationsList = useMemo(() => {
+    return locations;
+  }, []);
+  return { location, locationsList };
+};

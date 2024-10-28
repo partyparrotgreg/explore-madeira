@@ -9,35 +9,59 @@ export const RegionsMap = ({ regions }: { regions: RegionType[] }) => {
   const [selectedRegion, setSelectedRegion] = useState<
     RegionType["slug"] | null
   >(null);
-  const router = useRouter();
-  const handleClick = (slug: string) => {
-    router.push(`/regions/${slug}`);
-  };
 
   return (
     <section>
       <div className="bg-card md:p-12 rounded-3xl relative">
-        <div className="md:absolute bottom-0 left-0 p-4 grid grid-cols-2 md:grid-cols-1">
+        <div className="md:absolute bottom-0 left-0 p-4 grid grid-cols-2 md:grid-cols-1 gap-1">
           {regions.map(({ name, color, slug }) => {
             return (
-              <div
-                className="flex flex-row items-center justify-start hover:cursor-pointer py-1 px-2 hover:bg-background rounded-full"
-                onMouseEnter={() => setSelectedRegion(slug)}
-                onMouseLeave={() => setSelectedRegion(null)}
-                onClick={() => handleClick(slug)}
+              <RegionBadge
                 key={slug}
-              >
-                <div
-                  style={{ backgroundColor: color }}
-                  className="h-3 w-3 rounded-full"
-                />
-                <div className="text-sm font-medium px-2">{name}</div>
-              </div>
+                slug={slug}
+                name={name}
+                color={color}
+                setSelectedRegion={setSelectedRegion}
+              />
             );
           })}
         </div>
         <MadeiraMap region={selectedRegion} regions={regions} />
       </div>
     </section>
+  );
+};
+
+export const RegionBadge = ({
+  slug,
+  name,
+  color,
+  setSelectedRegion,
+}: {
+  slug: string;
+  name: string;
+  color: string;
+  setSelectedRegion?: (slug: string | null) => void;
+}) => {
+  const router = useRouter();
+
+  const handleClick = (slug: string) => {
+    router.push(`/regions/${slug}`);
+  };
+  return (
+    <div
+      className="flex flex-row items-center justify-start hover:cursor-pointer py-1 px-2 hover:bg-background rounded-full self-start shrink"
+      onMouseEnter={() => setSelectedRegion?.(slug)}
+      onMouseLeave={() => setSelectedRegion?.(null)}
+      onClick={() => handleClick?.(slug)}
+      key={slug}
+      style={{ backgroundColor: `${color}1a` }}
+    >
+      <div
+        style={{ backgroundColor: color }}
+        className="h-3 w-3 rounded-full"
+      />
+      <div className="text-sm font-medium px-2">{name}</div>
+    </div>
   );
 };

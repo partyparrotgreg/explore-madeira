@@ -1,7 +1,7 @@
 "use client";
 
 import { MadeiraMap } from "@/components/maps/MadeiraMap";
-import { useRegions } from "@/hooks/use-regions";
+import { useRegions } from "@/lib/regions";
 import { RegionType } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";

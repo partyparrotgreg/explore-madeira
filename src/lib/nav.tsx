@@ -15,6 +15,12 @@ export const nav: NavType[] = [
     icon: MapIcon,
   },
   {
+    slug: "hikes",
+    title: "Hikes",
+    href: "/hikes",
+    icon: MapIcon,
+  },
+  {
     slug: "news",
     title: "News",
     href: "/news",
