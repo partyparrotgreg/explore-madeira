@@ -1,15 +1,20 @@
 import { Button } from "@/components/ui/button";
-import { useRegions } from "@/hooks/use-regions";
+import { databases } from "@/lib/appwrite";
+import { useRegions } from "@/lib/regions";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { RegionsMap } from "./_components/RegionsMap";
 
-export default function RegionsPage() {
+export default async function RegionsPage() {
   const regions = useRegions();
+  const regionsDb = await databases
+    .listDocuments("6717a51a0016cac30273", "6717a5ed002a74356edb")
+    .catch((err) => console.error(err));
 
   return (
     <main className="flex flex-col gap-8">
+      <div>{JSON.stringify(regionsDb)}</div>
       <RegionsMap regions={regions} />
       <section className="flex flex-col gap-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
